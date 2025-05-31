@@ -51,7 +51,9 @@ export default function Main() {
                         onChange={() => setFalaAtiva(!falaAtiva)}
                         className={styles.switch}
                     />
-                    <span>{t("home.speaklabel")}</span>
+                    <span onMouseOver={() => {
+                        if (falaAtiva) falar(t("home.speaklabel"), i18n.language);
+                    }}>{t("home.speaklabel")}</span>
                 </label>
             </div>
             <div style={{ width: "600px" }}>
@@ -136,6 +138,11 @@ export default function Main() {
                     <div>
                         <h2 onMouseOver={() => { if (falaAtiva) falar(t(`translate.title`), i18n.language); }} className={styles.titletrans}>{t("translate.title")}</h2>
                     </div>
+                    <div>
+                        <p className={styles.explanation}>
+                            {t("translate.exp")}
+                        </p>
+                    </div>
                     <textarea
                         rows={5}
                         cols={50}
@@ -186,7 +193,7 @@ export default function Main() {
 
     return (
         <div style={{ display: "flex", height: "100vh" }}>
-            <Sidebar selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
+            <Sidebar falaAtiva={falaAtiva} selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
             <main style={{ flex: 1, padding: "2rem" }}>
                 {renderContent()}
             </main>

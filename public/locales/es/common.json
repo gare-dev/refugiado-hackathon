@@ -3,7 +3,7 @@
         "Início": "Comenzar",
         "Serviços": "Servicios",
         "Mapa": "Mapa",
-        "Falar Texto": "Hablar Texto"
+        "Falar Texto": "Texto"
     },
     "home": {
         "title": "¡Bienvenido! Seleccione su país.",
@@ -30,6 +30,7 @@
     "translate": {
         "title": "TRADUCTOR",
         "ph": "Ingrese el texto aquí ...",
-        "btt": "Para hablar"
+        "btt": "Para hablar",
+        "exp": "Ingrese el texto a hablar."
     }
 }

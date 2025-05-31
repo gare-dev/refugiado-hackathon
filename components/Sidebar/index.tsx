@@ -8,12 +8,14 @@ import {
 
 } from 'react-icons/md';
 import { useTranslation } from 'next-i18next';
+import { falar } from '@/utils/falar';
 
 
 
 interface Props {
     selectedItem: string;
     setSelectedItem: (value: string) => void;
+    falaAtiva: boolean
 }
 
 const sidebarItems = [
@@ -36,8 +38,9 @@ const sidebarItems = [
 
 ];
 
-const Sidebar = ({ selectedItem, setSelectedItem }: Props) => {
-    const { t } = useTranslation("common");
+const Sidebar = ({ selectedItem, setSelectedItem, falaAtiva }: Props) => {
+    const { t, i18n } = useTranslation("common");
+
 
     return (
         <nav className={styles.sidebar}>
@@ -52,6 +55,10 @@ const Sidebar = ({ selectedItem, setSelectedItem }: Props) => {
                         key={label}
                         className={`${styles.menuItem} ${selectedItem === label ? styles.active : ''}`}
                         onClick={() => setSelectedItem(label)}
+                        onMouseOver={() => {
+                            if (falaAtiva) falar(t(`sidebar.${label}`), i18n.language);
+                        }}
+
                     >
                         <a className={styles.menuLink}>
                             <Icon className={styles.icon} />

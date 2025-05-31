@@ -69,12 +69,20 @@
 .titletrans {
     font-family: "Kantumruy Pro", sans-serif;
     font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2em;
+}
+
+.textarea {}
+
+.explanation {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-size: 1.5em;
 }
-
-.textarea {}
 
 .texto {
     font-family: "Kantumruy Pro", sans-serif;

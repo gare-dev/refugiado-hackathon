@@ -10,7 +10,7 @@
         "speaklabel": "Ativar modo deficiente visual.",
         "espanha": "Espanha",
         "brasil": "Brasil",
-        "texto": "embaixo das imagens de moradia, trabalho, educação, saúde, seus direitos, ajuda, documentos, materiais informativos e outros, você pode clicar nos links para saber quais são os próximos passos da sua estadia no brasil."
+        "texto": "Embaixo das imagens de moradia, trabalho, educação, saúde, seus direitos, ajuda, documentos, materiais informativos e outros, você pode clicar nos links para saber quais são os próximos passos da sua estadia no brasil."
     },
     "services": {
         "moradia": "Moradia e abrigamento",
@@ -30,6 +30,7 @@
     "translate": {
         "title": "TRADUTOR",
         "ph": "Digite o texto aqui...",
-        "btt": "FALAR"
+        "btt": "FALAR",
+        "exp": "Digite o texto a ser falado."
     }
 }
