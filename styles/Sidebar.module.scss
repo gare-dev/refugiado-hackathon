@@ -3,7 +3,7 @@
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #1e293b; // dark slate blue
+    background-color: #171446; // dark slate blue
     color: #cbd5e1; // light slate
     display: flex;
     flex-direction: column;
@@ -103,4 +103,16 @@
     /* amarelo claro */
     color: #000;
     /* opcional: deixa o texto mais escuro */
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    max-width: 120px;
+    height: auto;
 }

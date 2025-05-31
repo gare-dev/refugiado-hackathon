@@ -30,7 +30,7 @@ const sidebarItems = [
         icon: MdNotifications,
     },
     {
-        label: 'Tradutor',
+        label: 'Falar Texto',
         icon: MdSettings,
     },
 
@@ -41,6 +41,11 @@ const Sidebar = ({ selectedItem, setSelectedItem }: Props) => {
 
     return (
         <nav className={styles.sidebar}>
+            {/* Logo no topo */}
+            <div className={styles.logoContainer}>
+                <img src="/assets/img/logo.jpg" alt="Logo" className={styles.logo} />
+            </div>
+
             <ul className={styles.menu}>
                 {sidebarItems.map(({ label, icon: Icon }) => (
                     <li

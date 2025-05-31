@@ -3,13 +3,14 @@
         "Início": "Início",
         "Serviços": "Serviços",
         "Mapa": "Mapa",
-        "Tradutor": "Tradutor"
+        "Falar Texto": "Falar Texto"
     },
     "home": {
         "title": "Bem-vindo! Selecione seu país.",
         "speaklabel": "Ativar modo deficiente visual.",
         "espanha": "Espanha",
-        "brasil": "Brasil"
+        "brasil": "Brasil",
+        "texto": "embaixo das imagens de moradia, trabalho, educação, saúde, seus direitos, ajuda, documentos, materiais informativos e outros, você pode clicar nos links para saber quais são os próximos passos da sua estadia no brasil."
     },
     "services": {
         "moradia": "Moradia e abrigamento",
@@ -22,5 +23,13 @@
         "documentos": "Documentos",
         "materiais": "Materiais informativos",
         "apatridia": "Apatridia"
+    },
+    "mapa": {
+        "locais": "Locais que podem te ajudar (ONGS)"
+    },
+    "translate": {
+        "title": "TRADUTOR",
+        "ph": "Digite o texto aqui...",
+        "btt": "FALAR"
     }
 }

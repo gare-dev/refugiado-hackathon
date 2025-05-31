@@ -54,6 +54,9 @@ export default function Main() {
                     <span>{t("home.speaklabel")}</span>
                 </label>
             </div>
+            <div style={{ width: "600px" }}>
+                <label className={styles.texto} htmlFor="">{t("home.texto")}</label>
+            </div>
         </div>
     );
     const ServicesScreen = () => (
@@ -104,8 +107,54 @@ export default function Main() {
 
     );
 
-    const MapScreen = () => <MapComponent />;
-    const TranslatorScreen = () => <h1>🌍 Página Tradutor</h1>;
+    const MapScreen = () => (
+        <>
+            <div className={styles.titlemap} style={{ display: "flex", justifyContent: "center", paddingLeft: 250 }}>
+                <h2 onMouseOver={() => { if (falaAtiva) falar(t(`mapa.locais`), i18n.language); }}>{t("mapa.locais")}</h2>
+            </div>
+            <MapComponent />
+
+        </>
+    );
+    const TranslatorScreen = () => {
+        const [text, setText] = useState("");
+
+        const handleSpeak = () => {
+            if (!text) return;
+
+            // Cancela fala anterior, se houver
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = i18n.language || "pt-BR";
+            window.speechSynthesis.speak(utterance);
+        };
+
+        return (
+            <div style={{ paddingLeft: 250, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div>
+                    <div>
+                        <h2 onMouseOver={() => { if (falaAtiva) falar(t(`translate.title`), i18n.language); }} className={styles.titletrans}>{t("translate.title")}</h2>
+                    </div>
+                    <textarea
+                        rows={5}
+                        cols={50}
+                        value={text}
+                        onMouseOver={() => { if (falaAtiva) falar(t(`translate.ph`), i18n.language); }}
+                        className={styles.textarea}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder={t("translate.ph")}
+                        style={{ width: "100%", padding: "0.5rem", fontSize: "1rem" }}
+                    />
+                    <br />
+                    <button onMouseOver={() => { if (falaAtiva) falar(t(`translate.btt`), i18n.language); }} onClick={handleSpeak} style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}>
+                        {t("translate.btt")}
+                    </button>
+                </div>
+            </div>
+
+        );
+    };
 
     useEffect(() => {
         console.log(selectedItem)
@@ -128,7 +177,7 @@ export default function Main() {
                 return <ServicesScreen />;
             case "Mapa":
                 return <MapScreen />;
-            case "Tradutor":
+            case "Falar Texto":
                 return <TranslatorScreen />;
             default:
                 return <h2>👈 Selecione uma opção no menu lateral</h2>;

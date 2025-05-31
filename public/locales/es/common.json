@@ -3,13 +3,14 @@
         "Início": "Comenzar",
         "Serviços": "Servicios",
         "Mapa": "Mapa",
-        "Tradutor": "Traductor"
+        "Falar Texto": "Hablar Texto"
     },
     "home": {
         "title": "¡Bienvenido! Seleccione su país.",
         "speaklabel": "Active el modo visualmente deficiente.",
         "espanha": "España",
-        "brasil": "Brasil"
+        "brasil": "Brasil",
+        "texto": "Bajo las imágenes de vivienda, trabajo, educación, salud, sus derechos, ayuda, documentos, materiales informativos y otros, puede hacer clic en los enlaces para saber cuáles son los próximos pasos de su estadía en Brasil."
     },
     "services": {
         "moradia": "Vivienda y refugio",
@@ -22,5 +23,13 @@
         "documentos": "Documento",
         "materiais": "Materiales informativos",
         "apatridia": "Apatridios"
+    },
+    "mapa": {
+        "locais": "Lugares que pueden ayudarlo (ONG)"
+    },
+    "translate": {
+        "title": "TRADUCTOR",
+        "ph": "Ingrese el texto aquí ...",
+        "btt": "Para hablar"
     }
 }

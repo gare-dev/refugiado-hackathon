@@ -28,21 +28,25 @@ const locations: [number, number][] = [
 
 const MapComponent = () => {
     return (
-        <div style={{ height: "400px", width: "100%" }}>
-            <MapContainer
-                center={[-15.793889, -47.882778]}
-                zoom={4}
-                scrollWheelZoom={false}
-                style={{ height: "100%", width: "100%" }}
-            >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                {locations.map((pos, idx) => (
-                    <Marker key={idx} position={pos}>
-                        <Popup>Ponto {idx + 1}</Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
+        <div style={{ display: "flex", justifyContent: "center", paddingLeft: "250px", alignItems: "center" }}>
+
+            <div style={{ height: "400px", width: "100%" }}>
+                <MapContainer
+                    center={[-15.793889, -47.882778]}
+                    zoom={4}
+                    scrollWheelZoom={false}
+                    style={{ height: "100%", width: "100%" }}
+                >
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    {locations.map((pos, idx) => (
+                        <Marker key={idx} position={pos}>
+                            <Popup>Ponto {idx + 1}</Popup>
+                        </Marker>
+                    ))}
+                </MapContainer>
+            </div>
         </div>
+
     );
 };
 
