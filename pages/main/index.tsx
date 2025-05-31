@@ -100,7 +100,7 @@ export default function Main() {
                         onMouseOut={e => (e.currentTarget.style.boxShadow = 'none')}
 
                     >
-                        <Icon size={48} style={{ marginBottom: '0.5rem', color: '#0070f3' }} />
+                        <Icon size={48} style={{ marginBottom: '0.5rem', color: '#171446' }} />
                         <div className={styles.textobox}>{t(`services.${key}`)}</div>
                     </a>
                 ))}
