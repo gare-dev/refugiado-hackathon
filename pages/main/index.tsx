@@ -1,33 +1,148 @@
+import Sidebar from "@/components/Sidebar";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import styles from "@/styles/main.module.scss"
+import { falar } from "@/utils/falar";
+import options from '@/utils/options'; // ou de onde salvar // IMPORTA AQUI
+import dynamic from "next/dynamic";
+
+const MapComponent = dynamic(() => import("@/components/Map"), {
+    ssr: false, // desabilita a renderização do lado servidor para este componente
+});
+
+
+
+// Componentes das telas
 
 
 export default function Main() {
-    const { t, i18n } = useTranslation('common');
-    const [lang] = useState(i18n.language)
-    const router = useRouter()
+    const { t, i18n } = useTranslation("common");
+    const router = useRouter();
+    const [selectedItem, setSelectedItem] = useState<string>("Início");
+    const [falaAtiva, setFalaAtiva] = useState(false); // switch ativado por padrão
+
+
+    const HomeScreen = () => (
+        <div className={styles.divHome}>
+            <div>
+                <h1 onMouseOver={() => {
+                    if (falaAtiva) falar(t("home.title"), i18n.language);
+                }} className={styles.titleHome}>{t("home.title")}</h1>
+            </div>
+            <div className={styles.flagContainer}>
+                <img
+                    onMouseOver={() => {
+                        if (falaAtiva) falar(t("home.brasil"), i18n.language);
+                    }} onClick={() => i18n.changeLanguage("pt")} src="/assets/img/brasil.jpg" alt="Português - Brasil" />
+                <img
+                    onMouseOver={() => {
+                        if (falaAtiva) falar(t("home.espanha"), i18n.language);
+                    }} onClick={() => i18n.changeLanguage("es")} src="/assets/img/espanha.png" alt="Espanhol - Espanha" />
+            </div>
+            <div>
+                <label
+                    className={styles.falarMouse}
+                    style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <input
+                        type="checkbox"
+                        checked={falaAtiva}
+                        onChange={() => setFalaAtiva(!falaAtiva)}
+                        className={styles.switch}
+                    />
+                    <span>{t("home.speaklabel")}</span>
+                </label>
+            </div>
+        </div>
+    );
+    const ServicesScreen = () => (
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingLeft: 250,
+            height: "100%"
+        }}>
+
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1.5rem',
+                maxWidth: '900px',
+                margin: '0 auto',
+            }}>
+                {options.map(({ key, icon: Icon, url }) => (
+                    <a
+                        key={key}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            textAlign: 'center',
+                            padding: '1rem',
+                            border: '1px solid #ddd',
+                            borderRadius: '8px',
+                            textDecoration: 'none',
+                            color: '#333',
+                            transition: 'box-shadow 0.2s',
+
+                        }}
+                        onMouseOver={e => {
+                            (e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)');
+                            if (falaAtiva) falar(t(`services.${key}`), i18n.language);
+                        }}
+                        onMouseOut={e => (e.currentTarget.style.boxShadow = 'none')}
+
+                    >
+                        <Icon size={48} style={{ marginBottom: '0.5rem', color: '#0070f3' }} />
+                        <div className={styles.textobox}>{t(`services.${key}`)}</div>
+                    </a>
+                ))}
+            </div>
+        </div>
+
+    );
+
+    const MapScreen = () => <MapComponent />;
+    const TranslatorScreen = () => <h1>🌍 Página Tradutor</h1>;
 
     useEffect(() => {
-        console.log(i18n.languages)
-    }, [i18n.language])
-
+        console.log(selectedItem)
+    }, [selectedItem])
 
     useEffect(() => {
+        const lang = i18n.language;
         if (lang && lang !== router.locale) {
             i18n.changeLanguage(lang);
             router.push(router.pathname, router.asPath, { locale: lang });
         }
-    }, [lang]);
+    }, [i18n.language]);
+
+    // Renderiza a tela conforme o item selecionado
+    const renderContent = () => {
+        switch (selectedItem) {
+            case "Início":
+                return <HomeScreen />;
+            case "Serviços":
+                return <ServicesScreen />;
+            case "Mapa":
+                return <MapScreen />;
+            case "Tradutor":
+                return <TranslatorScreen />;
+            default:
+                return <h2>👈 Selecione uma opção no menu lateral</h2>;
+        }
+    };
 
     return (
-        <div>
-            <h2 onMouseOver={() => {
-
-            }}>{t("teste.teste")}</h2>
+        <div style={{ display: "flex", height: "100vh" }}>
+            <Sidebar selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
+            <main style={{ flex: 1, padding: "2rem" }}>
+                {renderContent()}
+            </main>
         </div>
-    )
+    );
 }
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => ({

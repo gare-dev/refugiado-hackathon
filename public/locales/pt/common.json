@@ -1,5 +1,26 @@
 {
-    "teste": {
-        "teste": "TESTE"
+    "sidebar": {
+        "Início": "Início",
+        "Serviços": "Serviços",
+        "Mapa": "Mapa",
+        "Tradutor": "Tradutor"
+    },
+    "home": {
+        "title": "Bem-vindo! Selecione seu país.",
+        "speaklabel": "Ativar modo deficiente visual.",
+        "espanha": "Espanha",
+        "brasil": "Brasil"
+    },
+    "services": {
+        "moradia": "Moradia e abrigamento",
+        "trabalho": "Trabalho e renda",
+        "educacao": "Educação",
+        "saude": "Saúde",
+        "direitos": "Direitos e deveres",
+        "ajuda": "Onde encontrar ajuda",
+        "solicitacao": "Solicitação do reconhecimento da condição de refugiado",
+        "documentos": "Documentos",
+        "materiais": "Materiais informativos",
+        "apatridia": "Apatridia"
     }
 }

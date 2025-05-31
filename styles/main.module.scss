@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
+
+.divHome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-left: 250px;
+    height: 100%;
+}
+
+.flagContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.flagContainer img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.flagContainer img:hover {
+    transform: scale(1.05);
+}
+
+.titleHome {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 4em;
+}
+
+.falarMouse {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 2em;
+}
+
+.switch {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.textobox {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.5em;
+}

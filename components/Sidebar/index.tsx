@@ -1,0 +1,64 @@
+import React from 'react';
+import styles from '@/styles/Sidebar.module.scss';
+import {
+    MdHome,
+    MdPerson,
+    MdSettings,
+    MdNotifications,
+
+} from 'react-icons/md';
+import { useTranslation } from 'next-i18next';
+
+
+
+interface Props {
+    selectedItem: string;
+    setSelectedItem: (value: string) => void;
+}
+
+const sidebarItems = [
+    {
+        label: 'Início',
+        icon: MdHome,
+    },
+    {
+        label: 'Serviços',
+        icon: MdPerson,
+    },
+    {
+        label: 'Mapa',
+        icon: MdNotifications,
+    },
+    {
+        label: 'Tradutor',
+        icon: MdSettings,
+    },
+
+];
+
+const Sidebar = ({ selectedItem, setSelectedItem }: Props) => {
+    const { t } = useTranslation("common");
+
+    return (
+        <nav className={styles.sidebar}>
+            <ul className={styles.menu}>
+                {sidebarItems.map(({ label, icon: Icon }) => (
+                    <li
+                        key={label}
+                        className={`${styles.menuItem} ${selectedItem === label ? styles.active : ''}`}
+                        onClick={() => setSelectedItem(label)}
+                    >
+                        <a className={styles.menuLink}>
+                            <Icon className={styles.icon} />
+                            <span className={styles.linkText}>{t(`sidebar.${label}`)}</span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
+};
+
+
+export default Sidebar;
+
